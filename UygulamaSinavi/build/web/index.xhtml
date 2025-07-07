@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Kitap Yönetim Sistemi</title>
+    </h:head>
+    <h:body>
+        <h1>Kitap Yönetim Sistemi</h1>
+
+        <h:form>
+            <h:outputLabel for="name" value="Kitap Name: " />
+            <h:inputText id="name" value="#{kitapController.baslik}" required="true" />
+            <h:commandButton value="Save" action="#{kitapController.saveKitap}" />
+        </h:form>
+
+        <h:dataTable value="#{kitapController.kitapList}" var="kitap">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                #{kitap.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Baslik</f:facet>
+                #{kitap.baslik}
+            </h:column>
+            <h:column>
+                <h:commandButton value="Delete" action="#{kitapController.deleteKitap(kitap)}" />
+            </h:column>
+        </h:dataTable>
+    </h:body>
+</html>
